@@ -10,16 +10,22 @@ variable "ttl" {
   default     = "300"
 }
 
+variable "key_name" {
+  type        = string
+  description = "The ssh kye name"
+  default     = "luksha_aws"
+}
+
 variable "ec2_type" {
   type        = string
   description = "The instance type of EC2 instances"
-  default     = "t3.medium"
+  default     = "t2.micro"
 }
 
 variable "ec2_instance_count" {
   type        = number
   description = "The EC2 instance count"
-  default     = 5
+  default     = 1
 }
 
 variable "tags" {

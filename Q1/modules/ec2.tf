@@ -3,14 +3,15 @@ resource "aws_security_group" "this" {
   vpc_id      = aws_vpc.this.id
 
   ingress {
-    description = "TLS from VPC"
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = [aws_vpc.this.cidr_block]
+    description = "All traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
+    description = "All traffic"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -27,8 +28,8 @@ resource "aws_instance" "this" {
   instance_type   = var.ec2_type
 
   subnet_id                   = aws_subnet.this.id
-  security_groups             = [aws_security_group.this.id]
-  key_name                    = "luksha_aws"
+  vpc_security_group_ids      = [aws_security_group.this.id]
+  key_name                    = var.key_name
   associate_public_ip_address = true
   iam_instance_profile        = aws_iam_instance_profile.this.name
 

@@ -11,5 +11,4 @@ variable "ecr_count" {
 variable "tags" {
   description = "Tags for resources"
   type = map(string)
-  default = {}
 }

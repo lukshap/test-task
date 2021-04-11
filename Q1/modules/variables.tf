@@ -8,6 +8,11 @@ variable "ttl" {
   description = "TTL for R53"
 }
 
+variable "key_name" {
+  type        = string
+  description = "The ssh key name"
+}
+
 variable "ec2_type" {
   type        = string
   description = "The instance type of EC2 instances"
@@ -22,5 +27,4 @@ variable "ec2_instance_count" {
 variable "tags" {
   description = "Tags for resources"
   type = map(string)
-  default = {}
 }
